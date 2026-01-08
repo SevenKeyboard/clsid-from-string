@@ -14,9 +14,10 @@ class VersionManager_clsidFromString
         CLSIDFROMSTRING_VERSION := "1.0.0"
     }
 }
-clsidFromString(string, byRef CLSID)    {
-    static NOERROR:=0, CO_E_CLASSSTRING:=0x800401F3
-    varSetCapacity(CLSID,16,0)
-    ret:=dllCall("Ole32.dll\CLSIDFromString", "WStr",string, "Ptr",&CLSID, "Int")
-    return (ret==NOERROR)
+clsidFromString(str, &clsid)    {
+    local
+    static NOERROR := 0, CO_E_CLASSSTRING := 0x800401F3
+    varSetCapacity(clsid,16,0)
+    hr := dllCall("Ole32.dll\CLSIDFromString", "WStr",str, "Ptr",&clsid, "Int")
+    return (hr == NOERROR)
 }
