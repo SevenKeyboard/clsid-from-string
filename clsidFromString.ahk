@@ -14,7 +14,7 @@ class VersionManager_clsidFromString
         CLSIDFROMSTRING_VERSION := "1.0.0"
     }
 }
-clsidFromString(str, &clsid)    {
+clsidFromString(str, byRef clsid)    {
     local
     static NOERROR := 0, CO_E_CLASSSTRING := 0x800401F3
     varSetCapacity(clsid,16,0)
